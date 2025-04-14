@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Письмо 1</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+  <h1>Записка 1</h1>
+  <p>
+    Было легко, конечно.
+    <br>
+    <hr>
+    
+    Я вспоминал прошлое, когда увидел в тебе нечто большее.
+    <br /><br />
+    09.11.2024 00:43 (9)
+    <br>
+    09.11.2024 00:43 (14)
+    <br>
+    09.11.2024 00:53 (1)
+    <br>
+    09.11.2024 00:53 (6)
+  </p>
+  <br>
+  <p>Первые слова, через пробел</p>
+  <input type="text" id="answer" placeholder="зая..." />
+  <button onclick="check()">привлекла</button>
+
+  <script>
+    function spawnParticles() {
+    const num = 10;
+    for (let i = 0; i < num; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = 10 + Math.random() * 10 + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(p);
+
+      setTimeout(() => {
+        p.remove();
+      }, 20000);
+    }
+  }
+
+  setInterval(spawnParticles, 1500);
+  spawnParticles();
+
+    function check() {
+      const a = document.getElementById("answer").value.toLowerCase().trim();
+      if (a === "посмотри друг я я") {
+        location.href = "stepw.html";
+      } else {
+        alert("неверно.");
+      }
+    }
+  </script>
+</body>
+</html>

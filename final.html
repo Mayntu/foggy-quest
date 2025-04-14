@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Исчезновение</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Letter End</h1>
+        <p>
+          Нура,  
+          <br /><br />
+          Остался финальный шаг. Ты умница, Я знал что ты умная девочка. Как хочу тебя зацеловать.
+          <br>
+          Оно не такое, как все остальные. Всё, что я могу сказать.
+        </p>
+        <h3>49.808048, 73.106885 | №29 | проверь сумку</h3>
+      </div>
+
+      <canvas id="particles"></canvas>
+  <script>
+    const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particlesArray = [];
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height + Math.random() * 100; // Начинаются за пределами экрана
+      this.size = Math.random() * 6 + 6; // Крупные частицы
+      this.speedY = Math.random() * 0.2 + 0.1; // Медленное движение вверх
+      this.alpha = Math.random() * 0.5 + 0.3; // Прозрачность
+      this.glow = Math.random() * 0.4 + 0.3; // Эффект свечения
+    }
+
+    update() {
+      this.y -= this.speedY; // Двигаются вверх
+      if (this.y < 0) {
+        this.y = canvas.height + Math.random() * 100;
+        this.x = Math.random() * canvas.width;
+      }
+    }
+
+    draw() {
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; // Белые частицы
+      ctx.shadowBlur = 15; // Эффект свечения
+      ctx.shadowColor = "rgba(255, 255, 255, 0.8)"; // Цвет свечения
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0; // Сбросить эффект свечения после рисования
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 10; i++) { // Меньше частиц для более легкого эффекта
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+    initParticles();
+    animate();
+    setInterval(() => {
+        particlesArray.push(new Particle());
+    }, 1000);
+  </script>
+</body>
+</html>

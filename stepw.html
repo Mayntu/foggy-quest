@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Письмо 2</title>
+  <link rel="stylesheet" href="style3.css" />
+</head>
+<body>
+  <h1>Записка 2</h1>
+  <p>
+    Тогда ты мне понравилась. понравилась атмосфера.
+    <br>
+    Теперь, я скучаю по тебе, хочу обнять, поцеловать... Но сейчас...
+    <br>
+    <hr>
+    Скажи, ты помнишь деревья, наши деревья?
+ 
+
+  <input type="text" id="answer" placeholder="под" />
+  <button onclick="check()">да!</button>
+
+  <script>
+    function spawnParticles() {
+    const num = 10;
+    for (let i = 0; i < num; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = 10 + Math.random() * 10 + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(p);
+
+      setTimeout(() => {
+        p.remove();
+      }, 20000);
+    }
+  }
+
+  setInterval(spawnParticles, 1500);
+  spawnParticles();
+
+    function check() {
+      const a = document.getElementById("answer").value.toLowerCase().trim();
+      if (a === "ель" || a === "сосна" || a === "ели" || a === "сосны") {
+        location.href = "stepe.html";
+      } else {
+        alert("Неверно. Попробуй ещё.");
+      }
+    }
+  </script>
+</body>
+</html>

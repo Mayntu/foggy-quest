@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  color: #e0e0e0;
+  font-family: 'Marcellus', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+p {
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 280px;
+  background: #222;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+  background: #666;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #555;
+  width: 60%;
+  margin: 10px auto 20px auto;
+  opacity: 0.5;
+}
+
+/* ✨ Particles (floating glowing elements) */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0.3;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  opacity: 0.15;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: floatUp linear infinite;
+}

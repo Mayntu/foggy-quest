@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Фрагменты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0c0c0c;
+      color: #e0e0e0;
+      font-family: 'Marcellus', serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 500px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .image-box {
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+
+    .image-box img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .input-section {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+      width: 220px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    @media (min-width: 600px) {
+      .images {
+        flex-direction: row;
+      }
+      .image-box {
+        width: 45%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Фрагменты воспоминаний. ПОМНИ. Это только для тебя. Я тебе доверяю. Хочу видеть тебя.</h1>
+  <p class="description">
+    Что ты видишь? Найди местечко, отсканируй и запомни. <br />
+  </p>
+
+  <div class="images">
+    <div class="image-box">
+      <img src="qr-code-clue1.jpg" alt="Фрагмент 1" />
+    </div>
+    <div class="image-box">
+      <img src="qr-code-clue2.jpg" alt="Фрагмент 2" />
+    </div>
+  </div>
+  <div class="input-section">
+    <input type="text" id="code" placeholder="введи код..." />
+    <button onclick="check()">Проверить</button>
+  </div>
+
+  <script>
+    function check() {
+      const code = document.getElementById("code").value.trim().toLowerCase();
+      if (code === "04122024") {
+        location.href = "final.html";
+      } else {
+        alert("Код не тот... присмотрись внимательнее.");
+      }
+    }
+  </script>
+</body>
+</html>

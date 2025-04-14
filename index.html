@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Исчезновение</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Letter</h1>
+        <p>
+          Нура,  
+          <br /><br />
+          Если ты читаешь это, значит я всё же решился... Я не мог исчезнуть просто так.
+          В городе осталась одна вещь, которая может всё объяснить. Она скрыта, как и многое из того, что я не сказал. Но ты можешь её найти. ТОЛЬКО ТЫ, можешь её найти.
+          Следуй письмам.
+          Но помни: каждое решение влияет на путь. Это история для тебя и ТОЛЬКО ДЛЯ ТЕБЯ. Моя история, оставленная здесь...
+          Есть ограничения - у тебя небольше суток. Всё получится. Я верю в тебя.
+        </p>
+
+        <hr>
+
+        <p>просто</p>
+
+        <p>---. . .-. -.. .- -.- --..--  .-- -.- ..- ... -. --- --..--  .--. .-.. . ---. ---</p>
+    
+        <input type="text" id="answer" placeholder="твой ответ..." />
+        <button onclick="check()" style="color: #5d8c5a;">помнишь?</button>
+      </div>
+
+      <canvas id="particles"></canvas>
+  <script>
+    function check() {
+      const a = document.getElementById("answer").value.toLowerCase().trim();
+      if (a === "чердак, вкусно, плечо") {
+        location.href = "stepq.html";
+      } else {
+        alert("давай, ты справишься");
+      }
+    }
+
+    const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particlesArray = [];
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height + Math.random() * 100; // Начинаются за пределами экрана
+      this.size = Math.random() * 6 + 6; // Крупные частицы
+      this.speedY = Math.random() * 0.2 + 0.1; // Медленное движение вверх
+      this.alpha = Math.random() * 0.5 + 0.3; // Прозрачность
+      this.glow = Math.random() * 0.4 + 0.3; // Эффект свечения
+    }
+
+    update() {
+      this.y -= this.speedY; // Двигаются вверх
+      if (this.y < 0) {
+        this.y = canvas.height + Math.random() * 100;
+        this.x = Math.random() * canvas.width;
+      }
+    }
+
+    draw() {
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; // Белые частицы
+      ctx.shadowBlur = 15; // Эффект свечения
+      ctx.shadowColor = "rgba(255, 255, 255, 0.8)"; // Цвет свечения
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0; // Сбросить эффект свечения после рисования
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 10; i++) { // Меньше частиц для более легкого эффекта
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+    initParticles();
+    animate();
+    setInterval(() => {
+        particlesArray.push(new Particle());
+    }, 1000);
+  </script>
+</body>
+</html>
