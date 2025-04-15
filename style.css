@@ -14,6 +14,25 @@ body {
     overflow: hidden;
     backdrop-filter: blur(8px);
   }
+
+  .slider-container {
+    width: 300px;
+    margin: 40px;
+  }
+
+  .deadline {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
+
+  .current-time {
+    margin-top: 10px;
+  }
   
   .container {
     background-color: rgba(33, 33, 33, 0.8);
